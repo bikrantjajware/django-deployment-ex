@@ -1,0 +1,21 @@
+{% extends 'auth_app/base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+    {% if registered %}
+    <h1> Thanks you for Registering!!</h1>
+    {% else %}
+    <h1>Register Here!!!</h1>
+    <h3> Fill Out The Form</h3>
+<!--    enctype="multipart/form-data" is necessary when uploading images  -->
+    <form method="POST"  enctype="multipart/form-data">
+    {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" value="Register" class="btn btn-primary">
+    </form>
+    {% endif %}
+</div>
+{% endblock%}

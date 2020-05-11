@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>django level 2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="conntainer">
+<div class="jumbotron">
+    <center>
+<h1>welcome to page1</h1>
+        <a href="{% url 'first_app:customers' %}">goto customers page</a>
+        <a href="{% url 'admin:index' %}">goto admin page</a>
+        <a href="{% url 'first_app:index' %}">goto index page</a>
+
+<h2>here are the records:</h2>
+    </center>
+
+
+{% if access_records %}
+    <table class="table">
+        <thead class="thead-dark">
+        <th>Site Name</th>
+        <th>Date Accessed</th>
+        </thead>
+        {% for acc in access_records %}
+    <tr>
+        <td>{{ acc.name }}</td>
+        <td>{{ acc.date }}</td>
+    </tr>
+{% endfor %}
+    </table>
+{% else %}
+<p> NO ACCESS RECORD FOUND!!!</p>
+{% endif %}
+</div></div>
+</body>
+</html>
